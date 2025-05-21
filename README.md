@@ -28,7 +28,7 @@ The current codebase supports BiSSL with either SimCLR and BYOL as pretext task 
 
 The main code for conducting BiSSL is located in *runs/bissl*. See *runs/bissl/config.py* for the general BiSSL arguments.
 
-##### Classification (*runs/bissl/classification*)
+##### Classification (*runs/bissl/classification/*)
 To conduct the linear downstream head warmup followed by BiSSL on the Oxford-IIIT Pets dataset for classification, using the SimCLR self-supervised pre-trained model parameters as specified in the paper (i.e. achieved by running the line above), run:
 ```
 torchrun --nproc-per-node 4 runs/bissl/classification/simclr/run.py --root 'PATH_TO_ROOT' --pretrained_model_backbone 'Pretext_simclr_arch-resnet50_backbone_id-hb63rtyl.pth' --pretrained_model_head 'Pretext_simclr_arch-resnet50_head_id-hb63rtyl.pth' --pretrained_model_config 'Pretext_simclr_arch-resnet50_config_id-hb63rtyl.json' --d-dataset 'pets' --d-lr 0.03 --d-wd 0.001
@@ -37,20 +37,20 @@ The pretrained model weights and corresponding config has to be specified, as ou
 
 See *runs/bissl/classification/config.py* for additional classification specific arguments to parse. Similar see *runs/bissl/classification/simclr/config.py* and *runs/bissl/classification/byol/config.py* for SimCLR and BYOL specific arguments in BiSSL.
 
-##### Object Detection (*runs/bissl/object_detection*)
+##### Object Detection (*runs/bissl/object_detection/*)
 To conduct the linear downstream head warmup followed by BiSSL on the VOC07+12 dataset for object detection, using the SimCLR self-supervised pre-trained model parameters as specified in the paper (i.e. achieved by running the line above), run:
 ```
 torchrun --nproc-per-node 4 runs/bissl/object_detection/simclr/run.py --root 'PATH_TO_ROOT' --pretrained_model_backbone 'Pretext_simclr_arch-resnet50_backbone_id-hb63rtyl.pth' --pretrained_model_head 'Pretext_simclr_arch-resnet50_head_id-hb63rtyl.pth' --pretrained_model_config 'Pretext_simclr_arch-resnet50_config_id-hb63rtyl.json' --d-dataset 'voc07+12detection'
 ```
 See *runs/bissl/object_detection/config.py* for additional object detection specific arguments to parse. Similar see *runs/bissl/object_detection/simclr/config.py* and *runs/bissl/object_detection/byol/config.py* for SimCLR and BYOL specific arguments in BiSSL.
 
-### 3. Fine-Tuning (*fine-tuning.py*)
+### 3. Fine-Tuning
 The current codebase supports fine-tuning for classification and object detection tasks respectively.
 
 
 The main code for conducting fine-tuning is located in *runs/fine_tune*.See *runs/fine_tune/config.py* for the general fine-tuning arguments.
 
-##### Classification (*runs/fine_tune/classification*)
+##### Classification (*runs/fine_tune/classification/*)
 To conduct hyper-parameter optimization by conducting a random grid search over 100 combinations of learning rates and weight decays (as specified in the paper) used for fine-tuning a self-supervised pre-trained backbone via SimCLR on the pets dataset, run the following line
 ```
 torchrun --nproc-per-node 4 runs/fine_tune/classification/resnet/post_pretext_ft/run.py --root 'PATH_TO_ROOT' --pretrained_model_backbone 'Pretext_simclr_arch-resnet50_backbone_id-hb63rtyl.pth' --pretrained_model_config 'Pretext_simclr_arch-resnet50_config_id-hb63rtyl.json' --dset 'pets' --num-runs 100 --use-hpo 1
@@ -69,7 +69,7 @@ torchrun --nproc-per-node 4 runs/fine_tune/classification/resnet/post_bissl_ft/r
 
 See *runs/fine_tune/classification/config.py* for classification fine-tuning specific arguments to parse. 
 
-##### Object Detection (*runs/fine_tune/object_detection*)
+##### Object Detection (*runs/fine_tune/object_detection/*)
 The object detection fine-tuning code executes in a similar manner to classification:
 ```
 torchrun --nproc-per-node 4 runs/fine_tune/object_detection/resnet/post_pretext_ft/run.py --root 'PATH_TO_ROOT' --pretrained_model_backbone 'Pretext_simclr_arch-resnet50_backbone_id-hb63rtyl.pth' --pretrained_model_config 'Pretext_simclr_arch-resnet50_config_id-hb63rtyl.json' --dset 'voc07+12detection' --num-runs 100 --use-hpo 1

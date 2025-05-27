@@ -34,6 +34,9 @@ To similarly run BYOL:
 torchrun --nproc-per-node 4 runs/pretext/byol/run.py --root 'PATH_TO_ROOT'
 ```
 #### Config files (Pretext)
+(*To see configurable parameters for a run, simply run the script with the sole argument `-h`. E.g. `python runs/pretext/byol/run.py -h`*)
+
+Default config files:
 - Pretext General: `runs/pretext/config.py`
 - SimCLR Specific: `runs/pretext/simclr/config.py`
 - BYOL Specific: `runs/pretext/byol/config.py`
@@ -71,17 +74,18 @@ torchrun --nproc-per-node 4 runs/bissl/object_detection/simclr/run.py \
 ```
 
 #### Config Files (BiSSL)
+(*To see configurable parameters for a run, simply run the script with the sole argument `-h`. E.g. `python runs/bissl/classification/simclr/run.py -h`*)
+
+Default config files:
 - General: `runs/bissl/config.py`
-
-*Classification-specific:*
-- General: `runs/bissl/classification/config.py`
-- SimCLR: `runs/bissl/classification/simclr/config.py`
-- BYOL: `runs/bissl/classification/byol/config.py`
-
-*Object Detection-specific*
-- General: `runs/bissl/object_detection/config.py`
-- SimCLR: `runs/bissl/object_detection/simclr/config.py`
-- BYOL: `runs/bissl/object_detection/byol/config.py`
+- *Classification-specific:*
+  - General: `runs/bissl/classification/config.py`
+  - SimCLR: `runs/bissl/classification/simclr/config.py`
+  - BYOL: `runs/bissl/classification/byol/config.py`
+- *Object Detection-specific*
+  - General: `runs/bissl/object_detection/config.py`
+  - SimCLR: `runs/bissl/object_detection/simclr/config.py`
+  - BYOL: `runs/bissl/object_detection/byol/config.py`
 
 ---
 
@@ -145,17 +149,18 @@ torchrun --nproc-per-node 4 runs/fine_tune/object_detection/resnet/post_pretext_
 ```
 
 #### Config Files (Fine-Tuning)
+(*To see configurable parameters for a run, simply run the script with the sole argument `-h`. E.g. `python runs/fine_tune/classification/resnet/post_bissl_ft/run.py -h`*)
+
+Default config files:
 - General: `runs/fine_tune/config.py`
-
-*Classification-specific:*
-- General: `runs/fine_tune/classification/config.py`
-- Post Pretext: `runs/fine_tune/classification/resnet/post_pretext_ft/config.py`
-- Post BiSSL: `runs/fine_tune/classification/resnet/post_bissl_ft/config.py`
-
-*Object Detection-specific:*
-- General: `runs/fine_tune/object_detection/config.py`
-- Post Pretext: `runs/fine_tune/object_detection/resnet/post_pretext_ft/config.py`
-- Post BiSSL: `runs/fine_tune/object_detection/resnet/post_bissl_ft/config.py`
+- *Classification-specific:*
+  - General: `runs/fine_tune/classification/config.py`
+  - Post Pretext: `runs/fine_tune/classification/resnet/post_pretext_ft/config.py`
+  - Post BiSSL: `runs/fine_tune/classification/resnet/post_bissl_ft/config.py`
+- *Object Detection-specific:*
+  - General: `runs/fine_tune/object_detection/config.py`
+  - Post Pretext: `runs/fine_tune/object_detection/resnet/post_pretext_ft/config.py`
+  - Post BiSSL: `runs/fine_tune/object_detection/resnet/post_bissl_ft/config.py`
 
 
 

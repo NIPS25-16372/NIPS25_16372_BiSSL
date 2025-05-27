@@ -53,7 +53,7 @@ torchrun --nproc-per-node 4 runs/bissl/classification/simclr/run.py \
   --root PATH_TO_ROOT \
   --pretrained_model_backbone 'Pretext_simclr_arch-resnet50_backbone_id-hb63rtyl.pth'\
   --pretrained_model_head 'Pretext_simclr_arch-resnet50_head_id-hb63rtyl.pth' \
-  pretrained_model_config 'Pretext_simclr_arch-resnet50_config_id-hb63rtyl.json' \
+  --pretrained_model_config 'Pretext_simclr_arch-resnet50_config_id-hb63rtyl.json' \
   --d-dataset 'pets' \
   --d-lr 0.03 \
   --d-wd 0.001

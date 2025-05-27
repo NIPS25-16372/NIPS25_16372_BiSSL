@@ -1,5 +1,5 @@
 # BiSSL: Enhancing the Alignment Between Self-Supervised Pre-Training and Downstream Fine-Tuning via Bilevel Optimization
-This repository contains the pytorch-implementation accompanying the paper on BiSSL (submitted to NeurIPS 2025).  The codebase supports both classification and object detection tasks along the SimCLR and BYOL pretext tasks, and is verified for single-node multi-GPU setups using PyTorch 2.1.2.
+This repository contains the pytorch-implementation accompanying the paper on BiSSL (submitted to NeurIPS 2025).  The codebase supports both classification and object detection tasks along the SimCLR and BYOL pretext tasks, and is verified for single-node multi-GPU setups using Python 3.10.12, PyTorch 2.1.2, Torchvision 0.16.2, Timm 1.0.15 and Ray 2.9.2.
 ![](figs/bissl_pipeline.png)
 
 ---

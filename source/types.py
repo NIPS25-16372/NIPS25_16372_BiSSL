@@ -16,7 +16,6 @@ DatasetsClassification = Literal[
     "pets",
     "flowers",
     "aircrafts",
-    "celeba",
     "cifar10",
     "cifar100",
     "imagenet",

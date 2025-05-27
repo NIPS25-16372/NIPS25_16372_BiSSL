@@ -49,12 +49,25 @@ The current codebase supports BiSSL with both SimCLR and BYOL as pretext tasks a
 
 #### Classification (Example: SimCLR and Oxford-IIIT Pets)
 ```
-torchrun --nproc-per-node 4 runs/bissl/classification/simclr/run.py --root 'PATH_TO_ROOT' --pretrained_model_backbone 'Pretext_simclr_arch-resnet50_backbone_id-hb63rtyl.pth' --pretrained_model_head 'Pretext_simclr_arch-resnet50_head_id-hb63rtyl.pth' --pretrained_model_config 'Pretext_simclr_arch-resnet50_config_id-hb63rtyl.json' --d-dataset 'pets' --d-lr 0.03 --d-wd 0.001
+torchrun --nproc-per-node 4 runs/bissl/classification/simclr/run.py \
+  --root PATH_TO_ROOT \
+  --pretrained_model_backbone 'Pretext_simclr_arch-resnet50_backbone_id-hb63rtyl.pth'\
+  --pretrained_model_head 'Pretext_simclr_arch-resnet50_head_id-hb63rtyl.pth' \
+  pretrained_model_config 'Pretext_simclr_arch-resnet50_config_id-hb63rtyl.json' \
+  --d-dataset 'pets' \
+  --d-lr 0.03 \
+  --d-wd 0.001
 ```
 
 #### Object Detection (Example: SimCLR and VOC07+12)
+
 ```
-torchrun --nproc-per-node 4 runs/bissl/object_detection/simclr/run.py --root 'PATH_TO_ROOT' --pretrained_model_backbone 'Pretext_simclr_arch-resnet50_backbone_id-hb63rtyl.pth' --pretrained_model_head 'Pretext_simclr_arch-resnet50_head_id-hb63rtyl.pth' --pretrained_model_config 'Pretext_simclr_arch-resnet50_config_id-hb63rtyl.json' --d-dataset 'voc07+12detection'
+torchrun --nproc-per-node 4 runs/bissl/object_detection/simclr/run.py \
+  --root 'PATH_TO_ROOT' \
+  --pretrained_model_backbone 'Pretext_simclr_arch-resnet50_backbone_id-hb63rtyl.pth' \
+  --pretrained_model_head 'Pretext_simclr_arch-resnet50_head_id-hb63rtyl.pth' \
+  --pretrained_model_config 'Pretext_simclr_arch-resnet50_config_id-hb63rtyl.json' \
+  --d-dataset 'voc07+12detection'
 ```
 
 #### Config Files (BiSSL)
@@ -84,27 +97,51 @@ The current codebase supports fine-tuning for classification and object detectio
 ##### Post Pretext (HPO)
 Hyper-parameter optimization (HPO) with a random grid search over 100 combinations of learning rates and weight decays (as specified in the paper) used for fine-tuning a self-supervised pre-trained backbone via SimCLR on the pets dataset:
 ```
-torchrun --nproc-per-node 4 runs/fine_tune/classification/resnet/post_pretext_ft/run.py --root 'PATH_TO_ROOT' --pretrained_model_backbone 'Pretext_simclr_arch-resnet50_backbone_id-hb63rtyl.pth' --pretrained_model_config 'Pretext_simclr_arch-resnet50_config_id-hb63rtyl.json' --dset 'pets' --num-runs 100 --use-hpo 1
+torchrun --nproc-per-node 4 runs/fine_tune/classification/resnet/post_pretext_ft/run.py \
+  --root 'PATH_TO_ROOT' \
+  --pretrained_model_backbone 'Pretext_simclr_arch-resnet50_backbone_id-hb63rtyl.pth' \
+  --pretrained_model_config 'Pretext_simclr_arch-resnet50_config_id-hb63rtyl.json' \
+  --dset 'pets' \
+  --num-runs 100 \
+  --use-hpo 1
 ```
 
 ##### Post BiSSL (HPO)
 To conduct a similar run, but with a backbone obtained using BiSSL instead, run:
 Post BiSSL
 ```
-torchrun --nproc-per-node 4 runs/fine_tune/classification/resnet/post_bissl_ft/run.py --root 'PATH_TO_ROOT' --pretrained_model_backbone 'BiSSL_simclr_classification_pets_arch-resnet50_lower_backbone_id-izqrdr53.pth' --pretrained_model_config 'BiSSL_simclr_classification_pets_arch-resnet50_config_id-izqrdr53.json' --num-runs 100 --use-hpo 1
+torchrun --nproc-per-node 4 runs/fine_tune/classification/resnet/post_bissl_ft/run.py \
+  --root 'PATH_TO_ROOT' \
+  --pretrained_model_backbone 'BiSSL_simclr_classification_pets_arch-resnet50_lower_backbone_id-izqrdr53.pth' \
+  --pretrained_model_config 'BiSSL_simclr_classification_pets_arch-resnet50_config_id-izqrdr53.json' \
+  --num-runs 100 \
+  --use-hpo 1
 ```
 
 ##### Post BiSSL (Fixed HPs)
 To conduct 10 fine-tunings with different random seeds (post BiSSL) on the pets dataset with a fixed learning rate of 0.03 and weight decay of 0.001, run:
 ```
-torchrun --nproc-per-node 4 runs/fine_tune/classification/resnet/post_bissl_ft/run.py --root 'PATH_TO_ROOT' --pretrained_model_backbone 'BiSSL_simclr_classification_pets_arch-resnet50_lower_backbone_id-izqrdr53.pth' --pretrained_model_config 'BiSSL_simclr_classification_pets_arch-resnet50_config_id-izqrdr53.json' --num-runs 10 --use-hpo 0 --lr 0.03 --wd 0.001
+torchrun --nproc-per-node 4 runs/fine_tune/classification/resnet/post_bissl_ft/run.py \
+  --root 'PATH_TO_ROOT' \
+  --pretrained_model_backbone 'BiSSL_simclr_classification_pets_arch-resnet50_lower_backbone_id-izqrdr53.pth' \
+  --pretrained_model_config 'BiSSL_simclr_classification_pets_arch-resnet50_config_id-izqrdr53.json' \
+  --num-runs 10 \
+  --use-hpo 0 \
+  --lr 0.03 \
+  --wd 0.001
 ```
 
 ##### Object Detection (Example: VOC07+12)
 The code runs similarly to fine-tuning for classificaiton:
 ##### Post Pretext (HPO)
 ```
-torchrun --nproc-per-node 4 runs/fine_tune/object_detection/resnet/post_pretext_ft/run.py --root 'PATH_TO_ROOT' --pretrained_model_backbone 'Pretext_simclr_arch-resnet50_backbone_id-hb63rtyl.pth' --pretrained_model_config 'Pretext_simclr_arch-resnet50_config_id-hb63rtyl.json' --dset 'voc07+12detection' --num-runs 100 --use-hpo 1
+torchrun --nproc-per-node 4 runs/fine_tune/object_detection/resnet/post_pretext_ft/run.py \
+  --root 'PATH_TO_ROOT' \
+  --pretrained_model_backbone 'Pretext_simclr_arch-resnet50_backbone_id-hb63rtyl.pth' \
+  --pretrained_model_config 'Pretext_simclr_arch-resnet50_config_id-hb63rtyl.json' \
+  --dset 'voc07+12detection' \
+  --num-runs 100 \
+  --use-hpo 1
 ```
 
 #### Config Files (Fine-Tuning)

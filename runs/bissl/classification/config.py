@@ -14,7 +14,6 @@ class ArgsBiSSLClassification(ArgsBiSSLDefaults):
 
     d_dataset: DatasetsClassification  # Downstream dataset name
     d_batch_size: int = ArgsFTClassification.batch_size  # Downstream batch size
-    # d_use_randaug: BinaryChoices = 0  # Whether to use RandAugment for downstream training
 
     #### DOWNSTREAM CLASSIFICATION TASK SPECIFICS ####
     d_img_size: Optional[int] = None  # Downstream image size (d_img_size x d_img_size). Defaults to the image size used for pretraining.

@@ -135,7 +135,7 @@ torchrun --nproc-per-node 4 runs/fine_tune/classification/resnet/post_bissl_ft/r
   --wd 0.001
 ```
 
-##### Object Detection (Example: VOC07+12)
+#### Object Detection (Example: VOC07+12)
 The code runs similarly to fine-tuning for classificaiton:
 ##### Post Pretext (HPO)
 ```

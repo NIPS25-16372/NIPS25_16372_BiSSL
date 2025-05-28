@@ -44,9 +44,11 @@ Default config files:
 ---
 
 ### 2. BiSSL Training
-Run scripts: 
-- `runs/bissl/classification/*`
-- `runs/bissl/object_detection/*`
+Run scripts:
+- `runs/bissl/classification/simclr/run.py`
+- `runs/bissl/classification/byol/run.py`
+- `runs/bissl/object_detection/simclr/run.py`
+- `runs/bissl/object_detection/byol/run.py`
 
 The current codebase supports BiSSL with both SimCLR and BYOL as pretext tasks and can be used for classification or detection.
 
@@ -91,8 +93,10 @@ Default config files:
 
 ### 3. Fine-Tuning
 Run scripts: 
-- `runs/fine_tune/classification/*`
-- `runs/fine_tune/object_detection/*`
+- `runs/fine_tune/classification/resnet/post_pretext_ft/run.py`
+- `runs/fine_tune/classification/resnet/post_bissl_ft/run.py`
+- `runs/fine_tune/object_detection/resnet/post_pretext_ft/run.py`
+- `runs/fine_tune/object_detection/resnet/post_bissl_ft/run.py`
 
 The current codebase supports fine-tuning for classification and object detection tasks respectively.
 

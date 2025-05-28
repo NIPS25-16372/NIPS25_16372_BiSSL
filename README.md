@@ -33,7 +33,7 @@ To similarly run BYOL:
 ```
 torchrun --nproc-per-node 4 runs/pretext/byol/run.py --root 'PATH_TO_ROOT'
 ```
-#### Config files (Pretext)
+#### Config files
 (*To see configurable parameters for a run, simply run the script with the sole argument `-h`. E.g. `python runs/pretext/byol/run.py -h`*)
 
 Default config files:
@@ -73,7 +73,7 @@ torchrun --nproc-per-node 4 runs/bissl/object_detection/simclr/run.py \
   --d-dataset 'voc07+12detection'
 ```
 
-#### Config Files (BiSSL)
+#### Config Files
 (*To see configurable parameters for a run, simply run the script with the sole argument `-h`. E.g. `python runs/bissl/classification/simclr/run.py -h`*)
 
 Default config files:
@@ -148,7 +148,7 @@ torchrun --nproc-per-node 4 runs/fine_tune/object_detection/resnet/post_pretext_
   --use-hpo 1
 ```
 
-#### Config Files (Fine-Tuning)
+#### Config Files
 (*To see configurable parameters for a run, simply run the script with the sole argument `-h`. E.g. `python runs/fine_tune/classification/resnet/post_bissl_ft/run.py -h`*)
 
 Default config files:

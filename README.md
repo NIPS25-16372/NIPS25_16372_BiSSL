@@ -5,7 +5,7 @@ This repository contains the pytorch-implementation accompanying the paper on Bi
 ---
 
 ## Table of Contents
-- [Pretrained Models](#pretrained-models)
+- [Datasets and Pretrained Models](#datasets-and-pretrained-models)
 - [Training Pipeline Overview](#training-pipeline-overview)
   - [Self-Supervised Pretraining](#1-self-supervised-pretraining)
   - [BiSSL Training](#2-bissl-training)
@@ -13,7 +13,9 @@ This repository contains the pytorch-implementation accompanying the paper on Bi
 
 ---
 
-## Pretrained Models
+## Datasets and Pretrained Models
+By default, datasets are stored under the `data/` directory. Use `--dataset-root` to specify an alternative location. The dataset splits made in conjunction with this codebase are located in `data/tv_splits/`.
+
 Pretrained model weights and configuration files used in the paper can be downloaded [here](https://drive.google.com/drive/folders/120GUKlcpeh3rhKq9W_-6lSHCKWhQx7gB?usp=share_link). By default, models and corresponding config files are stored under the `models/` directory. Use `--model-root` to specify an alternative location.
 
 ## Training Pipeline Overview

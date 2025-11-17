@@ -13,8 +13,6 @@ from runs.pretext.simclr.config import ArgsPretextSimCLR
 from runs.bissl.config import ArgsBiSSLDefaults
 from runs.bissl.classification.byol.config import ArgsBiSSLClassificationBYOL
 from runs.bissl.classification.simclr.config import ArgsBiSSLClassificationSimCLR
-from runs.bissl.object_detection.byol.config import ArgsBiSSLDetectionBYOL
-from runs.bissl.object_detection.simclr.config import ArgsBiSSLDetectionSimCLR
 
 from runs.fine_tune.config import ArgsFineTuningDefaults
 
@@ -142,13 +140,6 @@ def get_pretext_and_bissl_configs(
                     bissl_config = ArgsBiSSLClassificationSimCLR()
                 case "byol":
                     bissl_config = ArgsBiSSLClassificationBYOL()
-
-        case "object_detection":
-            match pt_config_dict["pretext_task"]:
-                case "simclr":
-                    bissl_config = ArgsBiSSLDetectionSimCLR()
-                case "byol":
-                    bissl_config = ArgsBiSSLDetectionBYOL()
 
     override_config(
         bissl_config,

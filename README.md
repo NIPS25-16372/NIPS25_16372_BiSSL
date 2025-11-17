@@ -101,8 +101,8 @@ Post BiSSL
 ```
 torchrun --nproc-per-node 4 runs/fine_tune/classification/resnet/post_bissl_ft/run.py \
   --root PATH_TO_ROOT \
-  --pretrained_model_backbone 'BiSSL_simclr_classification_pets_arch-resnet50_lower_backbone_id-izqrdr53.pth' \
-  --pretrained_model_config 'BiSSL_simclr_classification_pets_arch-resnet50_config_id-izqrdr53.json' \
+  --pretrained_model_backbone 'BiSSL_simclr_classification_pets_arch-resnet50_lower_backbone_id-2gn6d5az.pth' \
+  --pretrained_model_config 'BiSSL_simclr_classification_pets_arch-resnet50_config_id-2gn6d5az.json' \
   --num-runs 100 \
   --use-hpo 1
 ```
@@ -112,8 +112,8 @@ To conduct 10 fine-tunings with different random seeds (post BiSSL) on the pets 
 ```
 torchrun --nproc-per-node 4 runs/fine_tune/classification/resnet/post_bissl_ft/run.py \
   --root PATH_TO_ROOT \
-  --pretrained_model_backbone 'BiSSL_simclr_classification_pets_arch-resnet50_lower_backbone_id-izqrdr53.pth' \
-  --pretrained_model_config 'BiSSL_simclr_classification_pets_arch-resnet50_config_id-izqrdr53.json' \
+  --pretrained_model_backbone 'BiSSL_simclr_classification_pets_arch-resnet50_lower_backbone_id-2gn6d5az.pth' \
+  --pretrained_model_config 'BiSSL_simclr_classification_pets_arch-resnet50_config_id-2gn6d5az.json' \
   --num-runs 10 \
   --use-hpo 0 \
   --lr 0.03 \

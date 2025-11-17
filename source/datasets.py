@@ -13,7 +13,6 @@ from source.dataset_attr.modified_datasets import (
     SUN397WPartitions,
     VOC2007Classification,
     Cub2011,
-    VOCObjectDetectionDataset,
 )
 
 

@@ -108,12 +108,12 @@ class IJGradCalc:
 
             # Inner product of the gradients and given input vectors
             # prod is a tuple of scalar tensors
-            prods: Tuple[torch.Tensor, ...] = tuple(
+            dot_prod: Tuple[torch.Tensor, ...] = sum(
                 grad.mul(v).sum() for grad, v in zip(grads, vs)
             )
 
             # Hessian vector product
-            hvps: Tuple[torch.Tensor, ...] = torch.autograd.grad(prods, self.parameters)  # type: ignore
+            hvps: Tuple[torch.Tensor, ...] = torch.autograd.grad(dot_prod, self.parameters)  # type: ignore
 
             # Accumulate gradients across all processes in distributed training.
             # Should be correct due to the liniarity of the hessian vector product...
@@ -176,7 +176,9 @@ def cg_solver(
 
             Hds = mvp_fn(ds)
 
-            alpha = sum(rdotr / (torch.sum(d * Hd) + 1e-12) for d, Hd in zip(ds, Hds))
+            # alpha = sum(rdotr / (torch.sum(d * Hd) + 1e-12) for d, Hd in zip(ds, Hds))
+            denom = sum(torch.sum(d * Hd) for d, Hd in zip(ds, Hds)) + 1e-12
+            alpha = rdotr / denom
 
             xs = tuple(x + alpha * d for x, d in zip(xs, ds))
             rs = tuple(r - alpha * Hd for r, Hd in zip(rs, Hds))

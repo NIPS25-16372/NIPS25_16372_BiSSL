@@ -1,7 +1,7 @@
 from typing import Literal
 
 PretextTaskTypes = Literal["simclr", "byol"]
-DownstreamTaskTypes = Literal["classification", "object_detection"]
+DownstreamTaskTypes = Literal["classification"]
 
 ConvBackbones = Literal["resnet18", "resnet50"]
 BackboneArchs = Literal[ConvBackbones]

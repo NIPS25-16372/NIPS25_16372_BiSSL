@@ -5,7 +5,6 @@ DownstreamTaskTypes = Literal["classification", "object_detection"]
 
 ConvBackbones = Literal["resnet18", "resnet50"]
 BackboneArchs = Literal[ConvBackbones]
-DetectionBackbones = Literal["resnet50"]
 
 ### Datasets ###
 DatasetsClassification = Literal[
@@ -24,8 +23,8 @@ DatasetsClassification = Literal[
     "voc07",
     "cub200",
 ]
-DatasetsDetection = Literal["voc07detection", "voc12detection", "voc07+12detection"]
-DownstreamDatasets = Literal[DatasetsClassification, DatasetsDetection]
+
+DownstreamDatasets = Literal[DatasetsClassification]
 PretrainDatasets = Literal["imagenet", "stl10"]
 Datasets = Literal[PretrainDatasets, DownstreamDatasets]
 DatasetSplits = Literal["unlabeled", "train", "val", "test", "trainval"]

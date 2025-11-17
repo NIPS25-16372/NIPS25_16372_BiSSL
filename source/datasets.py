@@ -262,39 +262,6 @@ class GetData:
 
                 return dataset
 
-            case "voc07detection":
-                assert split in ("train", "test", "val")
-                dataset = VOCObjectDetectionDataset(
-                    root=self.root,
-                    year="2007",
-                    image_set=split,
-                    download=self.download,
-                    transform=transform,
-                )
-                return dataset
-
-            case "voc12detection":
-                assert split in ("train", "test", "val")
-                dataset = VOCObjectDetectionDataset(
-                    root=self.root,
-                    year="2012",
-                    image_set=split,  # type: ignore
-                    download=self.download,
-                    transform=transform,
-                )
-                return dataset
-
-            case "voc07+12detection":
-                assert split in ("train", "test", "val")
-                dataset = VOCObjectDetectionDataset(
-                    root=self.root,
-                    year="2007+2012",
-                    image_set=split,  # type: ignore
-                    download=self.download,
-                    transform=transform,
-                )
-                return dataset
-
             case "cub200":
                 assert split in ("train", "test", "val")
                 dataset = Cub2011(
